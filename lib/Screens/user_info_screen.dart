@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+
 import 'package:language_learning_app_major_project/Functions/navigation.dart';
 import 'package:language_learning_app_major_project/Screens/language_selection_screen.dart';
 import 'package:language_learning_app_major_project/constants.dart';
@@ -13,6 +15,7 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
+  TextEditingController nameController = TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +63,13 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           10.0), // Optional: for rounded corners
                     ),
                     child: TextField(
+                      // clipBehavior: ,
+                      controller: nameController,
+                      onChanged: ((value) {
+                        setState(() {
+                          userName = value.toString();
+                        });
+                      }),
                       style: TextStyle(
                         // fontSize: 20,
                         color: secondaryColor,
@@ -170,4 +180,23 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           ),
         ));
   }
+}
+
+class FoodDrinks {
+  String title;
+  List<FoodDrinksElements> data;
+  FoodDrinks({
+    required this.title,
+    required this.data,
+  });
+  
+}
+
+class FoodDrinksElements {
+  String title;
+  String desc;
+  FoodDrinksElements({
+    required this.title,
+    required this.desc,
+  });
 }
